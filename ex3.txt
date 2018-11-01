@@ -1,0 +1,32 @@
+Program #1
+#include <stdio.h>
+#include<unistd.h>
+
+int main(void){
+  printf("Hello");
+  fork();
+  printf("\n");
+  return 0;
+}
+Output:
+Hello
+Hello
+-----------------------
+
+Program #2
+#include <stdio.h>
+#include<unistd.h>
+
+int main(void){
+  printf("Hello\n");
+  fork();
+  printf("\n");
+  return 0;
+}
+Output:
+Hello
+
+
+-----------------------
+
+The difference is in "\n". In first program we don't have it, that's why we get in output two words "Hello". One from parent, one from child. In second program we get in output one word "Hello" and twice "/n", because in this case fork() will work with "/n". 
